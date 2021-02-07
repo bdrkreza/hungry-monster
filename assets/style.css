@@ -1,27 +1,44 @@
-#countries {
+.search-box {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.foods {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    align-items: center;
 }
 
-.country {
-    border: 1px solid goldenrod;
-    border-radius: 20px;
-    padding: 20px;
+.foods img {
+    width: 150px;
+    height: 100%;
+}
+
+.food-img {
+    position: relative;
+    height: 200px;
+    width: 200px;
     text-align: center;
-    width: 300px;
 }
 
-.country-name {
-    font-size: 45px;
-    color: maroon;
-}
-
-.flag {
-    width: 300px;
-    height: auto;
-}
-
-.countryDetail {
-    text-align: center;
+.food-Info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

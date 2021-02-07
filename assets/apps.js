@@ -1,38 +1,44 @@
-fetch("https://restcountries.eu/rest/v2/all")
-    .then((res) => res.json())
-    .then((data) => displayCountries(data));
+// id call 
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+const searchFoods = document.getElementById('foods');
+const searchResult = document.getElementById('search-result');
+// const singleFoods = document.getElementById('single-foods');
 
-const displayCountries = (countries) => {
-    const countriesDiv = document.getElementById("countries");
-    countries.forEach((country) => {
-        const countryDiv = document.createElement("div");
-        countriesDiv.appendChild(countryDiv);
-        countryDiv.className = "country";
+//event listener handle
+searchBtn.addEventListener('click', getFoodsList);
 
-        const countryInfo = `
-<h3 class="country-name">${country.name}</h3>
-<p class="country-capital">${country.capital}</p>
-<button onclick="displayCountryDetail('${country.name}')" >Details</button>
-`;
-        countryDiv.innerHTML = countryInfo;
-    });
-};
 
-const displayCountryDetail = (name) => {
-    const url = `https://restcountries.eu/rest/v2/name/${name}`;
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => renderCountryInfo(data[0]));
+// Search Foods
+function getFoodsList(Element) {
+    Element.preventDefault();
 
-    const renderCountryInfo = (country) => {
-        console.log(country);
-        const countryDiv = document.getElementById("countryDetail");
-        countryDiv.innerHTML = `
-    <h1>${country.name}</h1>
-    <p>${country.population}</p>
-    <p>${country.area}</p>
-    <img class="flag" src ="${country.flag}">
-    
-    `;
-    };
-};
+    const inputData = (searchInput.value);
+    if (inputData.trim()) {
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                searchResult.innerHTML = `<h2> search result for ${inputData} </h2>`;
+                if (data.meals === null) {
+                    searchResult.innerHTML = `<h3> there are no Result for ${inputData}</h3>`;
+                } else {
+                    searchFoods.innerHTML = data.meals.map(
+                        (food) => `
+                        <div class"food-img"> 
+                        <img src="${food.strMealThumb}" >
+                        <div class"food-Info" foodID = "${food.idMeal}">
+                        <h3>${food.strMeal}</h3>
+                        </div>
+                        </div>
+                        `
+                    )
+                }
+            })
+
+
+    } else {
+        alert("Please enter a search Foods");
+    }
+
+}
