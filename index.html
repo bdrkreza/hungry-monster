@@ -2,25 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="assets/style.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
 
     <title>Hungry Monster</title>
 </head>
 
 <body>
-
-    <head>
+    <header class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img class="logo" src="image/logo.jfif" alt="" />
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+            <a class="navbar-brand" href="#"><span class="text-danger">Hungry</span> Monster</a>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02 ">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
@@ -34,20 +35,48 @@
                 </ul>
             </div>
         </nav>
-    </head>
-    <section class="search-box">
-        <form class="form-inline">
-            <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Enter your Foods Names" aria-label="Search" />
-            <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </section>
+    </header>
     <main>
-        <div id="search-result"></div>
-        <div id="foods" class="foods"></div>
-        <div id="single-foods"></div>
+        <div class="container">
+            <br />
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form class="card card-sm">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input id="search-field" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" />
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button onclick="searchFoods()" class="btn btn-outline-secondary" type="button">
+                    Search
+                  </button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+                <!--end of col-->
+            </div>
+        </div>
+        <!-- foods single section -->
+        <section class="container">
+            <div class="row">
+                <div id="foodsDetail"></div>
+            </div>
+        </section>
+        <!-- foods container section -->
+        <section class="container">
+            <div id="food-container" class="row"></div>
+        </section>
     </main>
 
-    <script src="assets/apps.js"></script>
+    <!-- Optional JavaScript -->
+    <script src="assets/apps.js "></script>
 </body>
 
 </html>
